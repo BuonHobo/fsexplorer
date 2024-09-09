@@ -212,7 +212,7 @@ HISTORY = "history.txt"
 EXCLUSION = [HISTORY,"exclude.txt"]
 REGEXES = "regex.txt"
 INIT = "init.sql"
-CHUNK_SIZE = 100
+CHUNK_SIZE = 1000
 
 # init_table(Path(INIT))
 # exit(0)
