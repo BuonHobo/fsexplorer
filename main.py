@@ -182,9 +182,18 @@ def main(fringe:Fringe):
         owner = get_file_owner(n)
         stat = n.stat()
         size = stat.st_size
-        mtime = datetime.date.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d")
-        ctime = datetime.date.fromtimestamp(stat.st_birthtime).strftime("%Y-%m-%d")
-        atime = datetime.date.fromtimestamp(stat.st_atime).strftime("%Y-%m-%d")
+        try:
+            ctime = datetime.date.fromtimestamp(stat.st_birthtime).strftime("%Y-%m-%d")
+        except:
+            ctime=datetime.date.fromtimestamp(0).strftime("%Y-%m-%d")
+        try:
+            mtime = datetime.date.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d")
+        except OSError:
+            mtime = ctime
+        try:
+            atime = datetime.date.fromtimestamp(stat.st_atime).strftime("%Y-%m-%d")
+        except OSError:
+            atime=mtime
 
         entry = (path, name, suffix, owner, size, mtime, ctime, atime)
         entries.append(entry)
