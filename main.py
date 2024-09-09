@@ -214,6 +214,9 @@ REGEXES = "regex.txt"
 INIT = "init.sql"
 CHUNK_SIZE = 100
 
+# init_table(Path(INIT))
+# exit(0)
+
 if __name__=="__main__":
     regex = "(?:"+")|(?:".join((line for line in Path(REGEXES).read_text().splitlines() if len(line)>0)) + ")"
     reg = re.compile(regex)
@@ -224,5 +227,5 @@ if __name__=="__main__":
     fringe = Fringe(TARGETS)
     for file in EXCLUSION:
         fringe.exclude_paths(Path(file))
-    init_table(Path(INIT))
+
     main(fringe)
