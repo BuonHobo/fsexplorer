@@ -8,7 +8,8 @@ create table files (
     size bigint not null,
     creation date not null,
     modification date not null,
-    access date not null
+    access date not null,
+    collected_date date not null default CURRENT_DATE
 );
 
 ALTER TABLE files
