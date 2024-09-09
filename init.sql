@@ -13,4 +13,4 @@ create table files (
 );
 
 ALTER TABLE files
-ADD CONSTRAINT unique_file UNIQUE (path, name, type);
+ADD CONSTRAINT unique_file_version UNIQUE (path, name, type, collected_date);
