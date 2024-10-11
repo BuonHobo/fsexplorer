@@ -10,7 +10,7 @@ from typing import Optional
 import psycopg
 import psycopg.connection
 
-import settings
+from settings import *
 
 
 if os.name == "nt":
