@@ -1,2 +1,0 @@
-/var/home/buonhobo/Documents/dotfiles
-/var/home/buonhobo/Documents/fstree

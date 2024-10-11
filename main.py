@@ -156,7 +156,7 @@ class Fringe:
 
 Entry = tuple[str,str,str,str,int,str,str,str]
 def insert_values(entries:list[Entry]):
-    db:psycopg.connection.Connection = psycopg.connect(dbname="postgres", user="postgres", password="assword", host="localhost", port="5432")
+    db:psycopg.connection.Connection = psycopg.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST, port=DB_PORT)
     cur = db.cursor()
     cur.executemany(f'insert into {DEST_TABLE} (path, name, type, owner, size, modification, creation, access) values (%s, %s, %s, %s, %s, %s, %s, %s) on conflict do nothing;', entries)
     db.commit()
@@ -164,7 +164,7 @@ def insert_values(entries:list[Entry]):
     entries.clear()
 
 def init_table(path:Path):
-    db =psycopg.connect(dbname="postgres", user="postgres", password="assword", host="localhost", port="5432")
+    db =psycopg.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST, port=DB_PORT)
     db.execute(path.read_bytes())
     db.commit()
     db.close()
@@ -221,6 +221,11 @@ REGEXES = "regex.txt"
 INIT = "init.sql"
 DEST_TABLE = "files"
 CHUNK_SIZE = 1000
+DB_HOST = "---"
+DB_PORT ="---"
+DB_NAME="---"
+DB_PASSWORD="---"
+DB_USER="---"
 
 # init_table(Path(INIT))
 # exit(0)
