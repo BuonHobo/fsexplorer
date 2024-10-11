@@ -10,6 +10,9 @@ from typing import Optional
 import psycopg
 import psycopg.connection
 
+import settings
+
+
 if os.name == "nt":
     import win32security
 
@@ -219,18 +222,6 @@ def check_targets(targets: list[str]) -> bool:
     return True
 
 
-TARGETS = ["//srvnas/Documenti"]  # Devono essere cartelle disgiunte!
-HISTORY = "history.txt"
-EXCLUSION = [HISTORY, "exclude.txt"]
-REGEXES = "regex.txt"
-INIT = "init.sql"
-DEST_TABLE = "files"
-CHUNK_SIZE = 1000
-DB_HOST = "---"
-DB_PORT ="---"
-DB_NAME="---"
-DB_PASSWORD="---"
-DB_USER="---"
 
 # init_table(Path(INIT))
 # exit(0)
